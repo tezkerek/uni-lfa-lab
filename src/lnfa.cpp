@@ -58,7 +58,6 @@ LNFA::verify_word(const std::string &word) {
         auto is_word_valid = verifier.advance(*symbol_iter, true);
 
         if (is_word_valid) {
-            /* ::printf("%s YES\n", word.c_str()); */
             return verifier.build_chain();
         }
     }

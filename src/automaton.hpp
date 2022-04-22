@@ -37,7 +37,6 @@ build_state_chain(const std::vector<Automaton::QueuedState> &state_queue) {
     // Start from the last queued state
     auto current_state = state_queue.back();
     while (current_state.origin.has_value()) {
-        /* printf("%d -> %d\n", current_state.state, current_state.origin); */
         chain.push_back(current_state.state);
         current_state = state_queue[current_state.origin.value()];
     }
