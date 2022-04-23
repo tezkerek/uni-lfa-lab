@@ -19,6 +19,12 @@ add_executable(nfa2dfa
     src/automaton.cpp
 )
 
+add_executable(minimize_dfa
+    src/minimize_dfa.cpp
+    src/dfa.cpp
+    src/automaton.cpp
+)
+
 target_include_directories(lnfa
     PRIVATE
         ${PROJECT_SOURCE_DIR}/include
