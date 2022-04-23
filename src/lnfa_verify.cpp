@@ -1,14 +1,19 @@
-#include "lnfa.hpp"
 #include <fstream>
+#include <iostream>
 
-int main() {
+#include "lnfa.hpp"
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        return 1;
+    }
+
+    std::ifstream ifs(argv[1]);
+
     LNFA lnfa;
-
-    std::ifstream ifs("lnfa_input.txt");
     ifs >> lnfa;
 
     // Start verifying words
-    std::ofstream ofs("output.txt");
     std::size_t word_count;
     ifs >> word_count;
 
@@ -17,21 +22,20 @@ int main() {
         ifs >> word;
 
         auto result = lnfa.verify_word(word);
-        ofs << word << ' ';
+        std::cout << word << ' ';
         if (result.has_value()) {
             auto &chain = result.value();
-            ofs << "DA:";
+            std::cout << "DA:";
             for (auto it = chain.rbegin(); it != chain.rend(); it++) {
-                ofs << " -> " << *it;
+                std::cout << " -> " << *it;
             }
         } else {
-            ofs << "NU";
+            std::cout << "NU";
         }
-        ofs << '\n';
+        std::cout << '\n';
     }
 
     ifs.close();
-    ofs.close();
 
     return 0;
 }

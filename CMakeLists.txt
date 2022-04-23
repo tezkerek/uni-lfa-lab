@@ -4,10 +4,9 @@ project(Automata)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-# set(CMAKE_CXX_FLAGS_RELEASE_INIT "-O3")
 
-add_executable(lnfa
-    src/main.cpp
+add_executable(lnfa_verify
+    src/lnfa_verify.cpp
     src/lnfa.cpp
     src/automaton.cpp
 )
@@ -23,9 +22,4 @@ add_executable(minimize_dfa
     src/minimize_dfa.cpp
     src/dfa.cpp
     src/automaton.cpp
-)
-
-target_include_directories(lnfa
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
 )
